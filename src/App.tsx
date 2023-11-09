@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { PUBLIC_URLS } from "./Config/routes";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
+import { Index } from "./Pages";
+import { Login } from "./Pages/Auth/Login";
+import { Register } from "./Pages/Auth/Register";
+import { Layout } from "./Layouts/Layouts";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path={PUBLIC_URLS.default} element={<Index />} />
+          <Route path={PUBLIC_URLS.login} element={<Login />} />
+          <Route path={PUBLIC_URLS.register} element={<Register />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 
